@@ -463,6 +463,7 @@ h2 {
 		<video id="rootVideo" autoplay="autoplay" muted="muted" loop="loop">
 				Your Browser not support video tag
 		</video>
+		<canvas id="ccanvas" width="640" height="480"></canvas>
 		<div id="headline_text" class="fill_bubbles">
 			<h1>PLAY.<br />WATCH LIVE.</h1>
 		</div>
@@ -569,24 +570,51 @@ h2 {
 
 <script type="text/javascript">
 
+var $video;
+		var ccanvas ;
+		var canvas 	;
+		var canvas2 ;
+		var copyctx ;
+		var ctx    	;
+		var ctx2	;
+		var video  	;
+/*function copyvideo(){
+		        if (!$video.paused && !$video.ended) {
+		            copyctx.drawImage($video, 0, 0);
+		            ctx2.drawImage(ccanvas, 0, 0);
+		            ctx.drawImage(ccanvas, 0, 0);
+		            setTimeout(copyvideo, 1000 / 60); // drawing at 30fps
+		        }
+}*/
+
 	$(function() {
 
-		var canvas 	= document.getElementById('subVideo');
-		var canvas2 = document.getElementById('thirdVideo');
-		var ctx    	= canvas.getContext('2d');
-		var ctx2		= canvas2.getContext('2d');
-		var video  	= document.getElementById('rootVideo');
+		ccanvas 	= document.getElementById('ccanvas');
+		canvas 	= document.getElementById('subVideo');
+		canvas2 = document.getElementById('thirdVideo');
+		copyctx = ccanvas.getContext('2d');
+		ctx    	= canvas.getContext('2d');
+		ctx2	= canvas2.getContext('2d');
+		video  	= document.getElementById('rootVideo');
+//		$video = video;
+	//	copyvideo();
 
 		video.addEventListener('play', function () {
+		    //$video = this;
+		//	copyvideo();
 		    var $this = this; //cache
+			alert(this);
 		    (function loop() {
-		        if (!$this.paused && !$this.ended) {
-		            ctx2.drawImage($this, 0, 0);
-		            ctx.drawImage($this, 0, 0);
+		        //if (!$this.paused && !$this.ended) {
+		            copyctx.drawImage($this, 0, 0);
+		            ctx2.drawImage(ccanvas, 0, 0);
+		            ctx.drawImage(ccanvas, 0, 0);
 		            setTimeout(loop, 1000 / 60); // drawing at 30fps
-		        }
+		        //}
 		    })();
 		}, 0);
+		video.load();
+		video.play();
 
 		if (navigator.userAgent.match(/iPad/i) != null || navigator.userAgent.match(/android/i) != null) {
 			$('video').each(function() {
