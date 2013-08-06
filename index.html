@@ -488,23 +488,14 @@ h2 {
                    -moz-perspective: 500px; /* Firefox */
                    -ms-perspective: 500px; /* Internet Explorer */
                    -o-perspective: 500px; /* Opera */">
-         <!--
-        <video id="subVideo" style="width: 100%; transform: rotateZ(1deg) rotateY(2deg); /* W3C */
-               -webkit-transform: rotateZ(1deg) rotateY(2deg); /* Safari & Chrome */
-               -moz-transform: rotateZ(1deg) rotateY(2deg); /* Firefox */
-               -ms-transform: rotateZ(1deg) rotateY(2deg); /* Internet Explorer */
-               -o-transform: rotateZ(1deg) rotateY(2deg); /* Opera */" autoplay="true" loop="true" muted="true">
-          Your browser does not support HTML5 video.
-        </video>
-      	-->
-      	<canvas id="subVideo" style="width: 100%; transform: rotateZ(1deg) rotateY(2deg); /* W3C */
-               -webkit-transform: rotateZ(1deg) rotateY(2deg); /* Safari & Chrome */
-               -moz-transform: rotateZ(1deg) rotateY(2deg); /* Firefox */
-               -ms-transform: rotateZ(1deg) rotateY(2deg); /* Internet Explorer */
-               -o-transform: rotateZ(1deg) rotateY(2deg); /* Opera */" >
-
-      	</canvas>
-     </div>		
+                <video id="subVideo" style="width: 100%; transform: rotateZ(1deg) rotateY(2deg); /* W3C */
+                       -webkit-transform: rotateZ(1deg) rotateY(2deg); /* Safari & Chrome */
+                       -moz-transform: rotateZ(1deg) rotateY(2deg); /* Firefox */
+                       -ms-transform: rotateZ(1deg) rotateY(2deg); /* Internet Explorer */
+                       -o-transform: rotateZ(1deg) rotateY(2deg); /* Opera */" autoplay="true" loop="true" muted="true">
+                  Your browser does not support HTML5 video.
+                </video>
+              </div>		
 
 	</div>
 	<div id="second_third_switcher">
@@ -526,7 +517,6 @@ h2 {
                    -moz-perspective: 500px; /* Firefox */
                    -ms-perspective: 500px; /* Internet Explorer */
                    -o-perspective: 500px; /* Opera */">
-                <!--
                 <video id="thirdVideo" style="width: 100%; transform: rotateZ(1deg) rotateY(2deg); /* W3C */
                        -webkit-transform: rotateZ(0deg) rotateY(0deg); /* Safari & Chrome */
                        -moz-transform: rotateZ(0deg) rotateY(0deg); /* Firefox */
@@ -534,15 +524,6 @@ h2 {
                        -o-transform: rotateZ(0deg) rotateY(0deg); /* Opera */" autoplay="autoplay" loop="true" muted="true">
                   Your browser does not support HTML5 video.
                 </video>
-              	-->
-      	<canvas id="thirdVideo" style="width: 100%; transform: rotateZ(0deg) rotateY(0deg); /* W3C */
-               -webkit-transform: rotateZ(0deg) rotateY(0deg); /* Safari & Chrome */
-               -moz-transform: rotateZ(0deg) rotateY(0deg); /* Firefox */
-               -ms-transform: rotateZ(0deg) rotateY(0deg); /* Internet Explorer */
-               -o-transform: rotateZ(0deg) rotateY(0deg); /* Opera */" >
-
-      	</canvas>
-
               </div>		
 
 	</div>
@@ -571,25 +552,6 @@ h2 {
 
 	$(function() {
 
-		var canvas 	= document.getElementById('subVideo');
-		var canvas2 = document.getElementById('thirdVideo');
-		var ctx    	= canvas.getContext('2d');
-		var ctx2		= canvas2.getContext('2d');
-		var video  	= document.getElementById('rootVideo');
-
-		video.addEventListener('play', function () {
-		    var $this = this; //cache
-		    (function loop() {
-		        if (!$this.paused && !$this.ended) {
-		            ctx2.drawImage($this, 0, 0);
-		            ctx2.restore();
-		            ctx.drawImage($this, 0, 0);
-		            ctx.restore();
-		            setTimeout(loop, 1000 / 33);
-		        }
-		    })();
-		}, 0);
-
 		if (navigator.userAgent.match(/iPad/i) != null || navigator.userAgent.match(/android/i) != null) {
 			$('video').each(function() {
 				$(this).remove();
@@ -609,8 +571,8 @@ h2 {
 			$('#secondScreen').css('margin-top',parseInt($('#mainScreen').height()) + 'px');
 			$('#second_third_switcher').css('margin-top',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + 'px');
 
-			//document.getElementById('subVideo').pause();
-			//document.getElementById('thirdVideo').pause();
+			document.getElementById('subVideo').pause();
+			document.getElementById('thirdVideo').pause();
 
 
 
@@ -622,7 +584,6 @@ h2 {
 	  		.add('source')
 	  		.attr('type','video/ogg')
 	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.ogg");
-	  	/*
 	  	$('#subVideo')
 	  		.add('source')
 	  		.attr('type','video/ogg')
@@ -631,8 +592,6 @@ h2 {
 	  		.add('source')
 	  		.attr('type',"http://www.w3schools.com/html/mov_bbb.ogg")
 	  		.attr('src','media/big_buck_bunny3.ogv');
-	  	*/
-
 			$('#thirdScreen').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()));
 			$('#third_forth_switcher').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + parseInt($('#thirdScreen').height()) + 100);
 	  // Webkit and IE support MP4 video format
@@ -641,7 +600,6 @@ h2 {
 	  		.add('source')
 	  		.attr('type','video/mp4')
 	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.mp4");
-	  	/*
 	  	$('#subVideo')
 	  		.add('source')
 	  		.attr('type','video/mp4')
@@ -650,8 +608,6 @@ h2 {
 	  		.add('source')
 	  		.attr('type','video/mp4')
 	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.mp4" );
-	  	*/
-
 			$('#thirdScreen').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + 300);
 			$('#third_forth_switcher').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + parseInt($('#thirdScreen').height()) + 150);
 
@@ -760,8 +716,8 @@ h2 {
 						margin: 0
 					})
 					if (navigator.userAgent.match(/iPad/i) === null) {
-						//document.getElementById('rootVideo').pause();
-						//document.getElementById('subVideo').play();
+						document.getElementById('rootVideo').pause();
+						document.getElementById('subVideo').play();
 					}
 			} else {
 				var secondToThirdActualOffset = document.getElementById('second_third_switcher').getBoundingClientRect();
@@ -772,8 +728,8 @@ h2 {
 						top : 0
 					});
 					if (navigator.userAgent.match(/iPad/i) === null) {
-						//document.getElementById('subVideo').pause();
-						//document.getElementById('rootVideo').play();
+						document.getElementById('subVideo').pause();
+						document.getElementById('rootVideo').play();
 					}
 				}
 			}
@@ -790,8 +746,8 @@ h2 {
 							margin: 0
 						})
 						if (navigator.userAgent.match(/iPad/i) === null) {
-							//document.getElementById('thirdVideo').play();
-							//document.getElementById('subVideo').pause();
+							document.getElementById('thirdVideo').play();
+							document.getElementById('subVideo').pause();
 						}
 				} else {
 					var thirdToForthActualOffset = document.getElementById('third_forth_switcher').getBoundingClientRect();
@@ -802,8 +758,8 @@ h2 {
 							top : 0
 						});
 						if (navigator.userAgent.match(/iPad/i) === null) {
-							//document.getElementById('subVideo').play();
-							//document.getElementById('thirdVideo').pause();
+							document.getElementById('subVideo').play();
+							document.getElementById('thirdVideo').pause();
 						}
 					}
 
