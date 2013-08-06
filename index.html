@@ -459,7 +459,7 @@ h2 {
 </head>
 <body>
 	<div id="onlive_logo" class="logo"></div>
-	<div id="mainScreen" style="display:none">
+	<div id="mainScreen">
 		<video id="rootVideo" autoplay="autoplay" muted="muted" loop="loop">
 				Your Browser not support video tag
 		</video>
@@ -582,8 +582,10 @@ h2 {
 		    (function loop() {
 		        if (!$this.paused && !$this.ended) {
 		            ctx2.drawImage($this, 0, 0);
+		            ctx2.restore();
 		            ctx.drawImage($this, 0, 0);
-		            setTimeout(loop, 1000 / 60); // drawing at 30fps
+		            ctx.restore();
+		            setTimeout(loop, 1000 / 33);
 		        }
 		    })();
 		}, 0);
