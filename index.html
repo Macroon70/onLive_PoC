@@ -460,11 +460,14 @@ h2 {
 
 <body>
 	<div id="onlive_logo" class="logo"></div>
-	<div id="mainScreen" style="display:none">
+	<div id="videocache" style="display:none">
 		<video id="rootVideo" autoplay="autoplay" muted="muted" loop="loop">
 				Your Browser not support video tag
 		</video>
-		<canvas id="ccanvas" width="640" height="480"></canvas>
+		<canvas id="ccanvas" width=320" height="240"></canvas>
+	</div>
+	<div id="mainScreen">
+		<canvas id="maincanvas" style="width:100%; height:100%;"></canvas>
 		<div id="headline_text" class="fill_bubbles">
 			<h1>PLAY.<br />WATCH LIVE.</h1>
 		</div>
@@ -573,9 +576,11 @@ h2 {
 
 var $video;
 		var ccanvas ;
+		var mcanvas ;
 		var canvas 	;
 		var canvas2 ;
 		var copyctx ;
+		var mctx    	;
 		var ctx    	;
 		var ctx2	;
 		var video  	;
@@ -591,30 +596,32 @@ var $video;
 	$(function() {
 
 		ccanvas 	= document.getElementById('ccanvas');
+		mcanvas 	= document.getElementById('maincanvas');
 		canvas 	= document.getElementById('subVideo');
 		canvas2 = document.getElementById('thirdVideo');
 		copyctx = ccanvas.getContext('2d');
+		mctx    = mcanvas.getContext('2d');
 		ctx    	= canvas.getContext('2d');
 		ctx2	= canvas2.getContext('2d');
 		video  	= document.getElementById('rootVideo');
 //		$video = video;
 	//	copyvideo();
 
-		video.addEventListener('play', function () {
+		video.addEventListener('playing', function () {
 		    //$video = this;
 		//	copyvideo();
 		    var $this = this; //cache
-			alert(this);
 		    (function loop() {
 		        //if (!$this.paused && !$this.ended) {
 		            copyctx.drawImage($this, 0, 0);
-		            ctx2.drawImage(ccanvas, 0, 0);
-		            ctx.drawImage(ccanvas, 0, 0);
+		            setTimeout(function(){mctx.drawImage(ccanvas, 0, 0);},1);
+		            setTimeout(function(){ctx.drawImage(ccanvas, 0, 0);},1);
+		            setTimeout(function(){ctx2.drawImage(ccanvas, 0, 0);},1);
 		            setTimeout(loop, 1000 / 60); // drawing at 30fps
 		        //}
 		    })();
 		}, 0);
-		video.load();
+		//video.load();
 		video.play();
 
 		if (navigator.userAgent.match(/iPad/i) != null || navigator.userAgent.match(/android/i) != null) {
@@ -726,6 +733,7 @@ var $video;
 
 
 	for ( var i = 0; i <= 50; i++) {
+	//break;
 		var rElem = $('.fill_bubbles');
 		var xPos = Math.floor(Math.random() * parseInt(rElem.width()));
 		var yPos = Math.floor(Math.random() * parseInt(rElem.height()));
@@ -758,6 +766,7 @@ var $video;
 	//$('#watch_spectatle').css('top',parseInt($('#secondScreen').height()) + 'px');
 
 	$(window).scroll(function(event) {
+	return true;
 				var secondActuallOffsets = document.getElementById('secondScreen').getBoundingClientRect();
 				var thirdActualOffsets = document.getElementById('thirdScreen').getBoundingClientRect();
 				var secondToThirdActualOffset = document.getElementById('second_third_switcher').getBoundingClientRect();
