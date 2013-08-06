@@ -1,0 +1,782 @@
+<!-- TODO : Full responsive support, optimize CSS and JS, iOS/Android/WPhone support -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<style type="text/css">
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+div {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #8c8c8c;
+	font-size: 1.5em;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	line-height: 50px;
+	margin-left: 25%;
+}
+
+h1 {
+	margin: 10% 0 0 10%;
+	font-size: 7.0em;
+	font-style: italic;
+	font-weight: bold;
+	line-height: 90px;
+	color: #ffffff;
+}
+
+h2 {
+	margin-top: 50px;
+	margin-left: 50px;
+	font-size: 3.5em;
+	font-style: italic;
+	font-weight: bold;
+	line-height: 50px;
+	color: #ffffff;
+}
+
+li.actual_menu {
+	margin-left: 0 !important;
+}
+
+#rootVideo {
+	width: 100%;
+}
+
+#subVideowrapper {
+	position: absolute;
+	top: 38%;
+	left: 35%;
+	z-index: -99;
+}
+
+#thirdVideowrapper {
+	position: absolute;
+	overflow: hidden;
+	top: 25%;
+	left: 40%;
+	z-index: -98;
+}
+
+#subVideo {
+	width: 100%;
+}
+
+#thirdVideo {
+	width: 100%
+}
+
+#mainScreen {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 0;
+	background-image: url('media/big_buck_bunny.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: 0;
+
+}
+
+#onlive_logo {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 5;
+	background-image: url('media/onlive_logo_transparent.png');
+	visibility: hidden;
+}
+
+.logo {
+	width: 40px;
+	height: 40px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.bubble {
+	background-image: url('media/bubble.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.circle {
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+}
+
+#headline_text {
+	position: fixed;
+	left: 60px;
+	top: 30%;
+	width: 70%;
+	height: 50%;
+	z-index: 1;
+}
+
+#headline_text > div {
+	position: absolute;
+}
+
+
+
+#side_wrapper {
+	width: 17%;
+	height: 100%;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+#side_wrapper > div {
+	position: absolute;
+}
+
+#side_background {
+	width: 95%;
+	right: 0;
+	height: 100%;
+	background-color: #000000;
+}
+
+#side_logo {
+	top: 20px;
+	left: 20%;
+	width: 80%;
+	height: 50px;
+	background-image: url('media/onlive_logo_with_text_transparent.png');
+}
+
+#side_menu {
+	top: 250px;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+
+.actual_menu {
+	font-size: 1.5em;
+	text-align: left;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.actual_menu a {
+	color: #ffffff;
+}
+
+li:not(.actual_menu):hover {
+	text-align: left;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+li:not(.actual_menu):hover a {
+	color: #ffffff;
+}
+
+#sigin {
+	bottom: 20px;
+	left: 20%;
+	width: 80%;
+	height: auto;
+}
+
+#sigin li {
+	margin-left: 0;
+}
+
+#sigin a {
+	text-align: left;
+}
+
+
+/* Second Screen */
+
+#secondScreen {
+	/*
+	background-image: url('media/iphone_screen.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	*/
+	position: absolute;
+	background-color: #ffffff;
+	width: 100%;
+	z-index: 1;
+}
+
+img {
+	width: 100%;
+}
+
+#secondScreen > div {
+	position: absolute;
+}
+
+#second_third_switcher {
+	position: absolute;
+	width: 100%;
+	height: 800px;
+	z-index: 2;
+}
+
+#second_third_switcher > div {
+	position: absolute;
+}
+
+#second_third_switcher p {
+	font-size: 1.5em;
+}
+
+#watch_learn {
+	width: 30%;
+	height: 40%;
+	right: 0;
+	top: 0;
+	background-color: #6f62bd;
+	z-index: 2;
+}
+
+#watch_learn p {
+	position: absolute;
+	color: #3d398b;
+	bottom: 70px;
+	left: 50px;
+}
+
+#watch_spectatle {
+	width: 73%;
+	height: 40%;
+	left: 0;
+	top: 60px;
+	background-color: #ffffff;
+	z-index: 1;
+}
+
+#watch_spectatle h2 {
+	color: #a1c25b;
+	margin-top: 80px;
+	margin-left: 70px;
+}
+
+#watch_spectatle h2 {
+	color: #a1c25b;
+	margin-top: 80px;
+	margin-left: 70px;
+}
+
+#watch_spectatle p {
+	position: absolute;
+	color: #59936b;
+	bottom: 120px;
+	left: 70px;
+}
+
+#watch_button {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	bottom: -50px;
+	left: 70%;
+}
+
+#spectatle_button {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	bottom: 85px;
+	left: 220px;
+}
+
+#thirdScreen {
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	/*
+	background-image: url('media/big_buck_bunny.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	*/
+	background-color: #000000;
+}
+
+#thirdScreen > div {
+	position: absolute;
+}
+
+#third_forth_switcher {
+	position: absolute;
+	width: 100%;
+	height: 600px;
+	z-index: 2;
+}
+
+#third_forth_switcher > div {
+	position: absolute;
+}
+
+#third_forth_switcher p {
+	font-size: 1.5em;
+}
+
+#watch_devices {
+	width: 60%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: #f3bd50;
+	z-index: 2;
+}
+
+#watch_devices h2 {
+	position: absolute;
+	left: 10%;
+	top: 200px;
+}
+
+#watch_devices p {
+	position: absolute;
+	color: #da904c;
+	bottom: 70px;
+	left: 15%;
+}
+
+#devices_button {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	bottom: 42px;
+	left: 32%;
+}
+
+#devices_bg {
+	position: absolute;
+	top: 20px;
+	left: 10%;
+	width: 80%;
+	height: 200px;
+	background-image: url('media/devices.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#watch_hardware {
+	width: 44%;
+	height: 95%;
+	right: 0;
+	top: 30px;
+	background-color: #ffffff;
+	z-index: 1;
+}
+
+#hardware_bg {
+	position: absolute;
+	top: 25%;
+	right: 10%;
+	width: 65%;
+	height: 300px;
+	background-image: url('media/hardware_controller.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#watch_hardware h2 {
+	position: absolute;
+	width: 80%;
+	right: 5%;
+	color: #6f62bd;
+}
+
+#hardware_footer {
+	position: absolute;
+	width: 100%;
+	height: 20%;
+	bottom: 0;
+	left: 0;
+	background-color: #e7e8e3;
+}
+
+#watch_hardware p {
+	position: absolute;
+	color: #82837e;
+	left: 15%;
+	bottom: 8%;
+}
+
+#hardware_button {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	bottom: 11%;
+	right: 15%;
+	z-index: 2;
+}
+
+@media screen and (max-width: 1200px) {
+
+h1 {
+	font-size: 5.0em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+#side_wrapper {
+	width: 25%;
+}
+
+
+}
+
+</style>
+</head>
+<body>
+	<div id="onlive_logo" class="logo"></div>
+	<div id="mainScreen">
+		<video id="rootVideo" autoplay="autoplay" muted="muted" loop="loop">
+				Your Browser not support video tag
+		</video>
+		<div id="headline_text" class="fill_bubbles">
+			<h1>PLAY.<br />WATCH LIVE.</h1>
+		</div>
+	</div>
+	<div id="side_wrapper">
+		<div id="side_background"></div>
+		<div id="side_logo" class="logo"></div>
+		<div id="side_menu">
+			<ul>
+				<li class="actual_menu"><a href="#">WELCOME</a></li>
+				<li><a href="#">PLAY</a></li>
+				<li><a href="#">GAMES</a></li>
+				<li><a href="#">HARDWARE</a></li>
+				<li><a href="#">JOIN</a></li>
+			</ul>
+		</div>
+		<div id="sigin"><ul><li><a href="#">SIGN IN</a></li></ul></div>
+	</div>
+	<div id="secondScreen">
+		<img src="media/iphone_screen.png"/>
+		<div id="subVideowrapper" style="width:40%; perspective: 500px; /* W3C */
+                   -webkit-perspective: 500px; /* Safari & Chrome */
+                   -moz-perspective: 500px; /* Firefox */
+                   -ms-perspective: 500px; /* Internet Explorer */
+                   -o-perspective: 500px; /* Opera */">
+                <video id="subVideo" style="width: 100%; transform: rotateZ(1deg) rotateY(2deg); /* W3C */
+                       -webkit-transform: rotateZ(1deg) rotateY(2deg); /* Safari & Chrome */
+                       -moz-transform: rotateZ(1deg) rotateY(2deg); /* Firefox */
+                       -ms-transform: rotateZ(1deg) rotateY(2deg); /* Internet Explorer */
+                       -o-transform: rotateZ(1deg) rotateY(2deg); /* Opera */" autoplay="true" loop="true" muted="true">
+                  Your browser does not support HTML5 video.
+                </video>
+              </div>		
+
+	</div>
+	<div id="second_third_switcher">
+		<div id="watch_learn">
+			<h2>WATCH AND<br />LEARN.</h2>
+			<p>JOIN NOW</p>
+			<div id="watch_button"><a href="#"><img src="media/purple_button.png" alt=""/></a></div>
+		</div>
+		<div id="watch_spectatle">
+			<h2>WATCH THE SPECTATLE</h2>
+			<p>JOIN NOW</p>
+			<div id="spectatle_button"><a href="#"><img src="media/green_button.png" alt=""/></a></div>
+		</div>
+	</div>
+	<div id="thirdScreen">
+		<img src="media/ipad_screen.png"/>
+		<div id="thirdVideowrapper" style="width:60%; perspective: 500px; /* W3C */
+                   -webkit-perspective: 500px; /* Safari & Chrome */
+                   -moz-perspective: 500px; /* Firefox */
+                   -ms-perspective: 500px; /* Internet Explorer */
+                   -o-perspective: 500px; /* Opera */">
+                <video id="thirdVideo" style="width: 100%; transform: rotateZ(1deg) rotateY(2deg); /* W3C */
+                       -webkit-transform: rotateZ(0deg) rotateY(0deg); /* Safari & Chrome */
+                       -moz-transform: rotateZ(0deg) rotateY(0deg); /* Firefox */
+                       -ms-transform: rotateZ(0deg) rotateY(0deg); /* Internet Explorer */
+                       -o-transform: rotateZ(0deg) rotateY(0deg); /* Opera */" autoplay="autoplay" loop="true" muted="true">
+                  Your browser does not support HTML5 video.
+                </video>
+              </div>		
+
+	</div>
+	</div>
+	<div id="third_forth_switcher">
+		<div id="watch_devices">
+			<div id="devices_bg"></div>
+			<h2>PLAY ON ALL YOUR<br />DEVICES</h2>
+			<p>JOIN NOW</p>
+			<div id="devices_button"><a href="#"><img src="media/orange_button.png" alt=""/></a></div>			
+		</div>
+		<div id="watch_hardware">
+			<div id="hardware_bg"></div>
+			<h2>ONE CONTROLLER,<br />ALL DEVICES</h2>
+			<div id="hardware_button"><a href="#"><img src="media/purple_button.png" alt=""/></a></div>			
+			<div id="hardware_footer"></div>
+			<p>SHOP HARDWARE</p>
+		</div>
+	</div>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+	$(function() {
+
+		if (navigator.userAgent.match(/iPad/i) != null || navigator.userAgent.match(/android/i) != null) {
+			$('video').each(function() {
+				$(this).remove();
+			})
+			$('#mainScreen').css('height',parseInt($(document).width()) / 1.77 + 'px');
+			$('#mainScreen').css('z-index','-999');
+			$('#secondScreen').css('height',parseInt($(document).width()) / 1.65 + 'px');
+			$('#thirdScreen').css('height',parseInt($(document).width()) / 1.77 + 'px');
+			$('#secondScreen').css('margin-top',parseInt($('#mainScreen').height()) - 40 + 'px');
+			$('#second_third_switcher').css('margin-top',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) - 120+ 'px');
+			$('#thirdScreen').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + 200);
+			$('#third_forth_switcher').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + parseInt($('#thirdScreen').height()) + 150);
+
+ 		} else {
+			$('#secondScreen').css('height',parseInt($(document).width()) / 1.77 + 'px');
+			$('#thirdScreen').css('height',parseInt($(document).width()) / 1.77 + 'px');
+			$('#secondScreen').css('margin-top',parseInt($('#mainScreen').height()) + 'px');
+			$('#second_third_switcher').css('margin-top',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + 'px');
+
+			document.getElementById('subVideo').pause();
+			document.getElementById('thirdVideo').pause();
+
+
+
+
+		// Firefox only support ogv video format
+		// TODO: opera support
+		if (/Firefox\//.test(navigator.userAgent)) {
+	  	$('#rootVideo')
+	  		.add('source')
+	  		.attr('type','video/ogg')
+	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.ogg");
+	  	$('#subVideo')
+	  		.add('source')
+	  		.attr('type','video/ogg')
+	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.ogg");
+	  	$('#thirdVideo')
+	  		.add('source')
+	  		.attr('type',"http://www.w3schools.com/html/mov_bbb.ogg")
+	  		.attr('src','media/big_buck_bunny3.ogv');
+			$('#thirdScreen').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()));
+			$('#third_forth_switcher').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + parseInt($('#thirdScreen').height()) + 100);
+	  // Webkit and IE support MP4 video format
+	  } else {
+	  	$('#rootVideo')
+	  		.add('source')
+	  		.attr('type','video/mp4')
+	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.mp4");
+	  	$('#subVideo')
+	  		.add('source')
+	  		.attr('type','video/mp4')
+	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.mp4" );
+	  	$('#thirdVideo')
+	  		.add('source')
+	  		.attr('type','video/mp4')
+	  		.attr('src',"http://www.w3schools.com/html/mov_bbb.mp4" );
+			$('#thirdScreen').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + 300);
+			$('#third_forth_switcher').css('marginTop',parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + parseInt($('#thirdScreen').height()) + 150);
+
+	  }
+	}
+
+		var elem = $("#rootVideo");
+
+		// fullsrceen API calls
+		if (elem.requestFullscreen) {
+		  elem.requestFullscreen();
+		} else if (elem.mozRequestFullScreen) {
+		  elem.mozRequestFullScreen();
+		} else if (elem.webkitRequestFullscreen) {
+		  elem.webkitRequestFullscreen();
+		}
+
+		var elem = $("#subVideo");
+
+		// fullsrceen API calls
+		if (elem.requestFullscreen) {
+		  elem.requestFullscreen();
+		} else if (elem.mozRequestFullScreen) {
+		  elem.mozRequestFullScreen();
+		} else if (elem.webkitRequestFullscreen) {
+		  elem.webkitRequestFullscreen();
+		}
+
+		var elem = $("#thirdVideo");
+
+		// fullsrceen API calls
+		if (elem.requestFullscreen) {
+		  elem.requestFullscreen();
+		} else if (elem.mozRequestFullScreen) {
+		  elem.mozRequestFullScreen();
+		} else if (elem.webkitRequestFullscreen) {
+		  elem.webkitRequestFullscreen();
+		}
+
+
+
+	$(window).resize(function() {
+		$('#secondScreen').css('margin-top',parseInt($('#mainScreen').height())-10 + 'px');
+	});
+
+
+	for ( var i = 0; i <= 50; i++) {
+		var rElem = $('.fill_bubbles');
+		var xPos = Math.floor(Math.random() * parseInt(rElem.width()));
+		var yPos = Math.floor(Math.random() * parseInt(rElem.height()));
+		var xyWidth = Math.floor(Math.random() * 30);
+		var eOpacity = Math.random() * 1;
+		$('<div/>')
+			.addClass('bubble')
+			.css({
+				width : xyWidth,
+				height : xyWidth,
+				top : yPos,
+				left : xPos,
+				opacity : eOpacity
+			}).appendTo(rElem);
+		if (i == 50) {
+			rElem.clone().appendTo($('#secondScreen'));
+			$('#secondScreen h1').html('WATCH<br />ANY GAME');
+			rElem.clone().appendTo($('#thirdScreen'));
+			$('#thirdScreen h1').html('PLAY<br />ANYWHERE,<br />ANYTIME.');
+
+		}
+	}
+
+	var mainOffsets = document.getElementById('mainScreen').getBoundingClientRect();
+	var secondToThirdOffset = document.getElementById('second_third_switcher').getBoundingClientRect();
+	var thirdToForthOffset = document.getElementById('third_forth_switcher').getBoundingClientRect();
+
+	//$('#watch_learn').css('top',parseInt($('#secondScreen').height()) - 150 + 'px');
+
+	//$('#watch_spectatle').css('top',parseInt($('#secondScreen').height()) + 'px');
+
+	$(window).scroll(function(event) {
+				var secondActuallOffsets = document.getElementById('secondScreen').getBoundingClientRect();
+				var thirdActualOffsets = document.getElementById('thirdScreen').getBoundingClientRect();
+				var secondToThirdActualOffset = document.getElementById('second_third_switcher').getBoundingClientRect();
+				var thirdToForthActualOffset = document.getElementById('third_forth_switcher').getBoundingClientRect();
+
+				if (mainOffsets.bottom > secondActuallOffsets.top && !$('#side_wrapper').hasClass('hiding_side')) {
+					$('#side_wrapper')
+						.addClass('hiding_side')
+						.animate({right: parseInt($(this).width()) * -1 }, 'slow', function() {
+							$('#onlive_logo').css('visibility','visible');
+						});
+				} else if (mainOffsets.bottom <= secondActuallOffsets.top && $('#side_wrapper').hasClass('hiding_side')) {
+					$('#side_wrapper')
+						.removeClass('hiding_side')
+						.animate({right: '0px'}, 'slow', function() {
+							$('#onlive_logo').css('visibility','hidden');
+						});
+				}
+			if (secondActuallOffsets.top <= 0 && $('#secondScreen').css('position') != 'fixed') {
+				secondToThirdOffset = document.getElementById('second_third_switcher').getBoundingClientRect();
+				$('#secondScreen')
+					.css({
+						position: 'fixed',
+						width: '100%',
+						top: 0,
+						left: 0,
+						margin: 0
+					})
+					if (navigator.userAgent.match(/iPad/i) === null) {
+						document.getElementById('rootVideo').pause();
+						document.getElementById('subVideo').play();
+					}
+			} else {
+				var secondToThirdActualOffset = document.getElementById('second_third_switcher').getBoundingClientRect();
+				if (secondToThirdOffset.top <= secondToThirdActualOffset.top && $('#secondScreen').css('position') == 'fixed') {
+					$('#secondScreen').css({
+						position : 'absolute',
+						marginTop : $('#mainScreen').height() -10,
+						top : 0
+					});
+					if (navigator.userAgent.match(/iPad/i) === null) {
+						document.getElementById('subVideo').pause();
+						document.getElementById('rootVideo').play();
+					}
+				}
+			}
+
+
+				if (thirdActualOffsets.top <= 0 && $('#thirdScreen').css('position') != 'fixed') {
+					thirdToForthOffset = document.getElementById('third_forth_switcher').getBoundingClientRect();
+					$('#thirdScreen')
+						.css({
+							position: 'fixed',
+							width: '100%',
+							top: 0,
+							left: 0,
+							margin: 0
+						})
+						if (navigator.userAgent.match(/iPad/i) === null) {
+							document.getElementById('thirdVideo').play();
+							document.getElementById('subVideo').pause();
+						}
+				} else {
+					var thirdToForthActualOffset = document.getElementById('third_forth_switcher').getBoundingClientRect();
+					if (thirdToForthOffset.top < thirdToForthActualOffset.top && $('#thirdScreen').css('position') == 'fixed') {
+						$('#thirdScreen').css({
+							position : 'absolute',
+							marginTop : parseInt($('#secondScreen').height()) + parseInt($('#mainScreen').height()) + 100 + 'px',
+							top : 0
+						});
+						if (navigator.userAgent.match(/iPad/i) === null) {
+							document.getElementById('subVideo').play();
+							document.getElementById('thirdVideo').pause();
+						}
+					}
+
+				}
+
+	});
+
+	});
+
+
+
+
+</script>
+
+
+
+
+
+
+
