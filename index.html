@@ -115,7 +115,7 @@ li.actual_menu {
 	position: fixed;
 	top: 20px;
 	right: 20px;
-	z-index: secon;
+	z-index: 9;
 	background-image: url('media/onlive_logo_transparent.png');
 	visibility: hidden;
 }
@@ -469,7 +469,7 @@ h2 {
 <body>
 	<div id="onlive_logo" class="logo"></div>
 	<div id="mainScreen">
-		<video id="rootVideo" autoplay="autoplay" muted="muted" loop="loop">
+		<video id="rootVideo" autoplay="autoplay" muted="muted" loop="loop" preload="auto">
   		<source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
   		<source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
 		</video>
@@ -537,19 +537,7 @@ h2 {
 </html>
 
 <script type="text/javascript">
-
 	$(function() {
-
-		var elem = $("#rootVideo");
-
-		// fullsrceen API calls
-		if (elem.requestFullscreen) {
-		  elem.requestFullscreen();
-		} else if (elem.mozRequestFullScreen) {
-		  elem.mozRequestFullScreen();
-		} else if (elem.webkitRequestFullscreen) {
-		  elem.webkitRequestFullscreen();
-		}
 
 
 		for ( var i = 0; i <= 30; i++) {
@@ -593,11 +581,11 @@ h2 {
 	$('#third_forth_switcher').css('marginTop',mainScreenHeight + secondScreenHeight + secondToThirdHeight+270);
 
 
-
 	window.onscroll = function(event) {
 
 				var secondActuallOffsets = document.getElementById('secondScreen').getBoundingClientRect();
 				var thirdActualOffsets = document.getElementById('thirdScreen').getBoundingClientRect();
+
 
 				if (secondActuallOffsets.top <= 0 && !$('#screen2').hasClass('show') && !$('#screen3').hasClass('show')) {
 					$('#secondScreen').css('visibility','hidden');
@@ -616,14 +604,6 @@ h2 {
 							 "marginLeft": "0",
 							 "marginTop": "0",
 					});
-					var elem = $('#rootVideo');
-					if (elem.requestFullscreen) {
-					  elem.requestFullscreen();
-					} else if (elem.mozRequestFullScreen) {
-					  elem.mozRequestFullScreen();
-					} else if (elem.webkitRequestFullscreen) {
-					  elem.webkitRequestFullscreen();
-					}					
 					$('body > #headline_text h1').html('PLAY.<br />WATCH LIVE.');
 				} else if (thirdActualOffsets.top <= 0 && !$('#screen3').hasClass('show')) {
 					$('#thirdScreen').css('visibility','hidden');
@@ -666,7 +646,6 @@ h2 {
 	};
 
 	});
-
 
 
 
